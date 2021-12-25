@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Case Module{% endblock %}
+
+{% block content %}
+  <h2>Incident Management » Ticket</h2>
+
+  <p>
+    <a href="{% url 'ticket_add' %}">Add ticket</a>
+  </p>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Tktnumber</th>
+        <th>Closedate</th>
+        <th>Product ID</th>
+        <th>Product Type</th>
+        <th>Provider</th>
+        <th>Customer Name</th>
+        <th>Priority</th>
+        <th>Onduty</th>
+        <th>Fault brief</th>
+        <th>RFO</th>
+        <th>TTR</th>
+        <th>First Response Time</th>
+        <th>Fix by csd(IPCC)</th> 
+      </tr>
+    </thead>
+    <tbody>
+      {% for tkt in tickets %}
+        <tr>
+          <td><a href="{% url 'ticket_change' tkt.pk %}">{{ tkt.tktnumber }}</a></td>
+          <td>{{ tkt.closedate }}</td>
+          <td>{{ tkt.product_ID }}</td>
+          <td>{{ tkt.service.name }}</td>
+          <td>{{ tkt.provider }}</td>
+          <td>{{ tkt.customer }}</td>
+          <td>{{ tkt.priority }}</td>
+          <td>{{ tkt.onduty }}</td>
+          <td>{{ tkt.fault }}</td>
+          <td>{{ tkt.rfo.name }}</td>
+          <td>{{ tkt.TTR }}</td>
+          <td>{{ tkt.First_response_time }}</td>
+          <td>{{ tkt.fix_by_csd }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">No ticket now. <a href="{% url 'ticket_add' %}">Add the first ticket</a>.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

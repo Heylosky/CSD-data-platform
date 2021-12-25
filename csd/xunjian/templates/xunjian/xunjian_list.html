@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Case Module{% endblock %}
+
+{% block content %}
+  <h2>CSD数据平台 &nbsp&nbsp&nbsp>>> &nbsp&nbsp&nbsp巡检</h2>
+
+<script language="javascript">
+  function adClick(ad, site) {
+    <!--document.form1.submit({% url 'ticket_add' %})-->
+    if ( site == 'https://None')
+    {
+      window.location = ad;
+    }
+    else
+    {
+      window.open(site);
+      window.location = ad;
+    }
+  }
+</script>
+
+
+<p>
+<h4>今日例行工作项目</h4>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>工作内容</th>
+        <th>建议执行时间</th>
+        <th>网址</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+        <tr>
+          <td><a href="javascript:adClick('{% url 'checking' %}', 'https://{{ item.web }}')">{{ item.xunjian_items }}</a></td>
+          <td>{{ item.suggestTime | time:"H:i" }}</td>
+          <td>{{ item.web }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No item now.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</p>
+
+<p>
+<h4>历史检查结果（当月）</h4>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>检查项</th>
+      <th>Onduty</th>
+      <th>检查结果</th>
+      <th>执行时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for re in results %}
+    <tr>
+      <td>{{ re.item }}</td>
+      <td>{{ re.onduty }}</td>
+      <td>{{ re.result}}</td>
+      <td>{{ re.check_time}}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4">No Check result now.</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</p>
+{% endblock %}

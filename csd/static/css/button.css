@@ -1,0 +1,56 @@
+table {
+    width: 100%;
+    ackground: #ccc;
+    margin: 10px auto;
+    border-collapse: collapse;/*border-collapse:collapse合并内外边距(去除表格单元格默认的2个像素内外边距*/
+    }
+th,td {
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+th {
+    background: #eee;
+    font-weight: bold;
+}
+tr {
+    background: #fff;
+}
+tr:hover {
+    background: #cc0;
+}
+td a {
+    color: #06f;
+    text-decoration: none;
+}
+td a:hover {
+    color: #06f;
+    text-decoration: underline;
+}
+/*标题样式*/
+h1 {
+    color: #FFFFFF;
+    background: #FF7900;
+    padding: 5px;
+    font-weight: bold;
+}
+h4 {
+    color: #000000;
+    background: linen;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.button {
+    background-color: #50BE87;
+    border: none;
+    color: black;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 0px 2px;
+    cursor: pointer;
+}

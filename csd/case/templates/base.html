@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}LAND data platform{% endblock %}</title>
+    <style type="text/css">
+      .errorlist {
+        margin: 0;
+        padding: 0;
+      }
+      .errorlist li {
+        list-style: none;
+        font-size: 90%;
+        color: red;
+      }
+      .errorlist ~ input,
+      .errorlist ~ select {
+        border-color: red;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/button.css" />
+  </head>
+
+  <body>
+    <h1>Welcome to CSD LAND data platform v-2.2</h1>
+    <a href="{% url 'xunjian_list' %}" class="button">巡检面板</a>
+    <a href="{% url 'ticket_list' %}" class="button">关单面板</a>
+    <hr>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
